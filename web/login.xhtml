@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <title>Login</title>
+    </h:head>
+
+    <h:body style="background-color: whitesmoke">
+
+        <h:form style="text-align: center;">
+
+            <h3 style="font-family: serif;margin-top: 100px">LOGIN FORM</h3>
+
+            <div class="card" style="margin-bottom: 10px;">
+                <h:outputLabel value="Username" for="username"/>
+                <div class="col-12 md:col-10">
+                    <p:inputText style="width:300px" id="username" dir="ltr" value="#{loginManagedBean.username}" maxlength="10" placeholder="Enter Username" required="true"/>
+                </div>
+            </div>
+
+            <div class="card" style="margin-bottom: 10px;">
+                <h:outputLabel value="Password" for="password"/>
+                <div class="col-12 md:col-10">
+                    <p:password style="width:300px" id="password" value="#{loginManagedBean.password}" placeholder="Enter Password" redisplay="true"/>
+                </div>
+            </div>
+
+            <div class="card" style="margin-bottom: 10px">
+                <h:outputLabel value="Country" for="country">
+                    <div class="col-12 md:col-10">
+                        <p:selectOneMenu style="width:300px" id="country">
+                            <f:selectItem itemLabel="Select Country" noSelectionOption="true"/>
+                            <f:selectItems/>
+                        </p:selectOneMenu>
+                    </div>
+                </h:outputLabel>
+
+            </div>
+
+            <p:commandButton value="Login" action="#{loginManagedBean.login}" ajax="false"/>
+
+        </h:form>
+
+    </h:body>
+</html>

@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Demo0 Title</title>
+    </h:head>
+    <h:body>
+        <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+                    
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
+                    
+                </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="175" header="Minimize" collapsible="true">
+                    <p:menu>
+                        <p:submenu label="Resources">
+
+                            <p:menuitem value="Demo1" url="demo1.xhtml" />
+                            <p:menuitem value="Demo2" url="demo2.xhtml" />
+                            <p:menuitem value="Demo3" url="demo3.xhtml" />
+                                             
+
+                        </p:submenu>
+
+                    </p:menu>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+                    <p:dataTable var="data" rows="12" value="#{demo0ManagedBean.dataList}">
+                        <p:column headerText="First Name">
+                            #{data.firstName}
+                        </p:column>
+                        <p:column headerText="Last Name">
+                            #{data.lastName}
+                        </p:column>
+                        <p:column headerText="Gender">
+                            #{data.work}
+                        </p:column>
+                        <p:column headerText="Company">
+                            #{data.gender}
+                        </p:column>
+                        <p:column headerText="Residence">
+                            #{data.home}
+                        </p:column>
+                        <p:column headerText="Marital">
+                            #{data.marital}
+                        </p:column>
+                        <p:column headerText="Years Old">
+                            #{data.age}
+                        </p:column>
+                    </p:dataTable>
+                </p:layoutUnit>
+
+            </p:layout>
+    </h:body>
+</html>
+
