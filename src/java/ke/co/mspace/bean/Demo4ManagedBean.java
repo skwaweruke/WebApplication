@@ -6,7 +6,6 @@
 package ke.co.mspace.bean;
 
 import java.sql.Connection;
-import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -22,13 +21,14 @@ import ke.co.mspace.data.DBConnection;
  */
 @ManagedBean
 @RequestScoped
-public class Demo3ManagedBean {
+public class Demo4ManagedBean {
 
     /**
-     * Creates a new instance of Demo3ManagedBean
+     * Creates a new instance of Demo4ManagedBean
      */
-    public Demo3ManagedBean() {
+    public Demo4ManagedBean() {
     }
+    
     List<List<String>> tableData = new ArrayList<>();
     List<String> columnNames = new ArrayList<>();
 
@@ -38,7 +38,10 @@ public class Demo3ManagedBean {
         try (Connection connection = DBConnection.getConnection3()) {
 
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT MINZU, USERID, Badgenumber, Name, Gender, TITLE, PAGER, email, department, notify  from USERINFO WHERE PAGER  IS NOT NULL");
+            String checkinout;
+            checkinout = "SELECT CONVERT(date, GETDATE()) AS BIOMETRICDATE, CONVERT(VARCHAR(5), CHECKINOUT.CHECKTIME,108) AS BIOMETRICTIME, USERINFO.Badgenumber, USERINFO.PAGER, USERINFO.Name FROM CHECKINOUT\n" +
+                    "INNER JOIN USERINFO ON CHECKINOUT.USERID  = USERINFO.USERID WHERE CHECKTIME >= DATEADD(day,-7, GETDATE()) and CHECKINOUT.CHECKTYPE = 'I' order by LOGID DESC";
+            ResultSet resultSet = statement.executeQuery(checkinout);
 
             int columnCount = resultSet.getMetaData().getColumnCount();
 
@@ -64,5 +67,5 @@ public class Demo3ManagedBean {
 
         return tableData;
     }
-
+    
 }

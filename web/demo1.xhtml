@@ -11,11 +11,11 @@
         <p:layout fullPage="true">
 
             <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
-                
+
             </p:layoutUnit>
 
             <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
-                
+
             </p:layoutUnit>
 
             <p:layoutUnit position="west" size="175" header="Minimize" collapsible="true">
@@ -25,7 +25,8 @@
                         <p:menuitem value="Demo1" url="demo1.xhtml" />
                         <p:menuitem value="Demo2" url="demo2.xhtml" />
                         <p:menuitem value="Demo3" url="demo3.xhtml" />
-                 
+                        <p:menuitem value="Demo4" url="demo4.xhtml" />
+
                     </p:submenu>
 
                 </p:menu>
@@ -35,7 +36,7 @@
             <p:layoutUnit position="center">
                 <h:form>
 
-            
+
                     <p:dataTable value="#{demo1ManagedBean.tableData}" var="rowData">
                         <p:columns value="#{demo1ManagedBean.columnNames}" var="columnName" columnIndexVar="columnIndex">
                             <f:facet name="header">

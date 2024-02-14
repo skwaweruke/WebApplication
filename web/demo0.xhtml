@@ -10,55 +10,56 @@
     <h:body>
         <p:layout fullPage="true">
 
-                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
-                    
-                </p:layoutUnit>
+            <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
 
-                <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
-                    
-                </p:layoutUnit>
+            </p:layoutUnit>
 
-                <p:layoutUnit position="west" size="175" header="Minimize" collapsible="true">
-                    <p:menu>
-                        <p:submenu label="Resources">
+            <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
 
-                            <p:menuitem value="Demo1" url="demo1.xhtml" />
-                            <p:menuitem value="Demo2" url="demo2.xhtml" />
-                            <p:menuitem value="Demo3" url="demo3.xhtml" />
-                                             
+            </p:layoutUnit>
 
-                        </p:submenu>
+            <p:layoutUnit position="west" size="175" header="Minimize" collapsible="true">
+                <p:menu>
+                    <p:submenu label="Resources">
 
-                    </p:menu>
-                </p:layoutUnit>
+                        <p:menuitem value="Demo1" url="demo1.xhtml" />
+                        <p:menuitem value="Demo2" url="demo2.xhtml" />
+                        <p:menuitem value="Demo3" url="demo3.xhtml" />
+                        <p:menuitem value="Demo4" url="demo4.xhtml" />
 
-                <p:layoutUnit position="center">
-                    <p:dataTable var="data" rows="12" value="#{demo0ManagedBean.dataList}">
-                        <p:column headerText="First Name">
-                            #{data.firstName}
-                        </p:column>
-                        <p:column headerText="Last Name">
-                            #{data.lastName}
-                        </p:column>
-                        <p:column headerText="Gender">
-                            #{data.work}
-                        </p:column>
-                        <p:column headerText="Company">
-                            #{data.gender}
-                        </p:column>
-                        <p:column headerText="Residence">
-                            #{data.home}
-                        </p:column>
-                        <p:column headerText="Marital">
-                            #{data.marital}
-                        </p:column>
-                        <p:column headerText="Years Old">
-                            #{data.age}
-                        </p:column>
-                    </p:dataTable>
-                </p:layoutUnit>
 
-            </p:layout>
+                    </p:submenu>
+
+                </p:menu>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center">
+                <p:dataTable var="data" rows="12" value="#{demo0ManagedBean.dataList}">
+                    <p:column headerText="First Name">
+                        #{data.firstName}
+                    </p:column>
+                    <p:column headerText="Last Name">
+                        #{data.lastName}
+                    </p:column>
+                    <p:column headerText="Gender">
+                        #{data.work}
+                    </p:column>
+                    <p:column headerText="Company">
+                        #{data.gender}
+                    </p:column>
+                    <p:column headerText="Residence">
+                        #{data.home}
+                    </p:column>
+                    <p:column headerText="Marital">
+                        #{data.marital}
+                    </p:column>
+                    <p:column headerText="Years Old">
+                        #{data.age}
+                    </p:column>
+                </p:dataTable>
+            </p:layoutUnit>
+
+        </p:layout>
     </h:body>
 </html>
 

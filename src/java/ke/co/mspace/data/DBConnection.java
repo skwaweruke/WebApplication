@@ -6,6 +6,7 @@
 package ke.co.mspace.data;
 
 import java.sql.Connection;
+import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -25,6 +26,10 @@ public class DBConnection {
     private static final String db_url2 = "jdbc:mysql://localhost:3306/dbMSpace";
     private static final String db_username2 = "skwaweruke";
     private static final String db_password2 = "skwaweruke";
+    
+    private static final String db_url3 = "jdbc:sqlserver://192.168.1.91;databaseName=biometric;encrypt=false";
+    private static final String db_username3 = "simon";
+    private static final String db_password3 = "Mspace54#";
 
     public static Connection getConnection1() {
 
@@ -55,6 +60,36 @@ public class DBConnection {
             }
 
             con = DriverManager.getConnection(db_url2, db_username2, db_password2);
+        } catch (SQLException ex) {
+            Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return con;
+
+    }
+    
+    public static Connection getConnection3() {
+
+        Connection con = null;
+
+        try {
+            try {
+                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver"); 
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            con = DriverManager.getConnection(db_url3, db_username3, db_password3);
+            
+            if (con != null) {
+                
+                DatabaseMetaData databaseMetaData = con.getMetaData();
+                System.out.println("Driver name: "+databaseMetaData.getDriverName());
+                System.out.println("Driver version: "+databaseMetaData.getDriverVersion());
+                System.out.println("Product name: "+databaseMetaData.getDatabaseProductName());
+                
+                
+            }
         } catch (SQLException ex) {
             Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
         }

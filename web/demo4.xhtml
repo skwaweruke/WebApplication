@@ -5,7 +5,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Demo2 Title</title>
+        <title>Demo4 Title</title>
         <style>
             .myTable {
                 border-collapse: collapse;
@@ -52,35 +52,27 @@
 
             <p:layoutUnit position="center">
 
-                <h:dataTable value="#{demo3ManagedBean.tableData}" var="row" styleClass="myTable">
+                <h:dataTable value="#{demo4ManagedBean.tableData}" var="row" styleClass="myTable">
 
+                    <h:column>
+                        <f:facet name="header">Biometric Date</f:facet>
+                            #{row[0]}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">Biometric Time</f:facet>
+                            #{row[1]}
+                    </h:column>
                     <h:column>
                         <f:facet name="header">Badge Number</f:facet>
                             #{row[2]}
                     </h:column>
                     <h:column>
-                        <f:facet name="header">Name</f:facet>
+                        <f:facet name="header">Pager</f:facet>
                             #{row[3]}
                     </h:column>
                     <h:column>
-                        <f:facet name="header">Gender</f:facet>
+                        <f:facet name="header">Name</f:facet>
                             #{row[4]}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Title</f:facet>
-                            #{row[5]}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Pager</f:facet>
-                            #{row[6]}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Email</f:facet>
-                            #{row[7]}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Department</f:facet>
-                            #{row[8]}
                     </h:column>
 
                 </h:dataTable>
