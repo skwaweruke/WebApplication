@@ -40,6 +40,7 @@ public class Demo4ManagedBean {
      * Creates a new instance of Demo4ManagedBean
      */
     public Demo4ManagedBean() {
+        System.out.println("Called...");
     }
 
     List<List<String>> tableData = new ArrayList<>();
