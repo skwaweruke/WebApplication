@@ -10,7 +10,7 @@
     <h:body>
         <p:layout fullPage="true">
 
-            <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+            <p:layoutUnit position="north" size="50" resizable="true" closable="true" collapsible="true">
             </p:layoutUnit>
 
             <p:layoutUnit position="south" size="50" closable="true" collapsible="true">
@@ -36,7 +36,7 @@
             <p:layoutUnit position="center">
                 <h:form>
 
-                    <p:dataTable style="background-color: gray" value="#{demo2ManagedBean.tableData}" var="rowData">
+                    <p:dataTable style="background-color: gray" value="#{demo2ManagedBean.tableData}" var="rowData" paginator="true" scrollHeight="400" scrollable="true">
                         <p:columns value="#{demo2ManagedBean.columnNames}" var="columnName" columnIndexVar="columnIndex">
                             <f:facet name="header">
                                 #{columnName}
@@ -51,4 +51,3 @@
         </p:layout>   
     </h:body>
 </html>
-

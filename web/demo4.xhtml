@@ -2,8 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Demo4 Title</title>
         <style>
@@ -22,83 +21,74 @@
         </style>
     </h:head>
     <h:body>
+        <h:form>
 
-        <p:layout fullPage="true">
+            <p:layout fullPage="true">
 
-            <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+                <p:layoutUnit position="north" size="50" resizable="true" closable="true" collapsible="true">
 
-            </p:layoutUnit>
+                </p:layoutUnit>
 
-            <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
+                <p:layoutUnit position="south" size="50" closable="true" collapsible="true">
 
-            </p:layoutUnit>
+                </p:layoutUnit>
 
-            <p:layoutUnit position="west" size="175" header="Minimize" collapsible="true">
-                <p:menu>
-                    <p:submenu label="Resources">
+                <p:layoutUnit position="west" size="175" header="Minimize" collapsible="true">
+                    <p:menu>
+                        <p:submenu label="Resources">
 
-                        <p:menuitem value="Demo1" url="demo1.xhtml" />
-                        <p:menuitem value="Demo2" url="demo2.xhtml" />
-                        <p:menuitem value="Demo3" url="demo3.xhtml" />
-                        <p:menuitem value="Demo4" url="demo4.xhtml" />
-
-
-
-                    </p:submenu>
-
-                </p:menu>
-
-            </p:layoutUnit>
-
-            <p:layoutUnit position="center">
+                            <p:menuitem value="Demo1" url="demo1.xhtml" />
+                            <p:menuitem value="Demo2" url="demo2.xhtml" />
+                            <p:menuitem value="Demo3" url="demo3.xhtml" />
+                            <p:menuitem value="Demo4" url="demo4.xhtml" />
+                            <p:menuitem value="Demo5" url="demo5.xhtml" />
 
 
-                <div class="flex justify-content-between">
-
-                    <p:commandButton value="Export as XLS">
-                        <p:dataExporter type="xls" target="tableId" fileName="CheckINOUT" postProcessor="#{demo4ManagedBean.postProcessXLS}"/>
-                    </p:commandButton>
-                    <p:commandButton value="Export to PDF">
-                        <p:dataExporter type="pdf" target="tableId" fileName="CheckINOUT" postProcessor="#{demo4ManagedBean.preProcessPDF}"/>
-
-                    </p:commandButton>
-
-                </div>
+                        </p:submenu>
 
 
+                    </p:menu>
+
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
 
 
-                <h:dataTable value="#{demo4ManagedBean.tableData}" id="tableId" var="row" styleClass="myTable">
+                    <div class="flex justify-content-between">
+
+                        <p:commandButton value="Export as XLS">
+                            <p:dataExporter type="xls" target="tableId" fileName="CheckINOUT" postProcessor="#{demo4ManagedBean.postProcessXLS}" pageOnly="true"/>
+                        </p:commandButton>
+                        <p:commandButton value="Export to PDF">
+                            <p:dataExporter type="pdf" target="tableId" fileName="CheckINOUT"/>
+                        </p:commandButton>
+
+                        <!--<p:calendar alt="Calendar" label="Calendar" value="#{demo4ManagedBean.date}" mode="popup" showOn="button" navigator="true" pattern="MM/dd/yyyy HH:mm"/>-->
+
+                    </div>
+
+                    <p:dataTable value="#{demo4ManagedBean.tableData}"  id="tableId" var="row" styleClass="myTable" scrollable="false" paginator="true" rows="12">
+                        <p:column headerText="Biometric Date">
+                            <h:outputText value="#{row[0]}" />
+                        </p:column>
+                        <p:column headerText="Biometric Time">
+                            <h:outputText value="#{row[1]}" />
+                        </p:column>
+                        <p:column filterBy="#{row[2]}" headerText="Badge Number" filterMatchMode="exact">
+                            <h:outputText value="#{row[2]}" />
+                        </p:column>
+                        <p:column headerText="Pager">
+                            <h:outputText value="#{row[3]}" />
+                        </p:column>
+                        <p:column headerText="Name">
+                            <h:outputText value="#{row[4]}" />
+                        </p:column>
+                    </p:dataTable>
 
 
+                </p:layoutUnit>
 
-                    <h:column>
-                        <f:facet name="header">Biometric Date</f:facet>
-                            #{row[0]}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Biometric Time</f:facet>
-                            #{row[1]}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Badge Number</f:facet>
-                            #{row[2]}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Pager</f:facet>
-                            #{row[3]}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Name</f:facet>
-                            #{row[4]}
-                    </h:column>
-
-                </h:dataTable>
-
-            </p:layoutUnit>
-
-        </p:layout>
-
+            </p:layout>
+        </h:form>
     </h:body>
 </html>
-

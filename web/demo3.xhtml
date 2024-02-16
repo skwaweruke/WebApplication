@@ -22,73 +22,75 @@
         </style>
     </h:head>
     <h:body>
+        <h:form>
+            <p:layout fullPage="true">
 
-        <p:layout fullPage="true">
+                <p:layoutUnit position="north" size="50" resizable="true" closable="true" collapsible="true">
 
-            <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+                </p:layoutUnit>
 
-            </p:layoutUnit>
+                <p:layoutUnit position="south" size="50" closable="true" collapsible="true">
 
-            <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
+                </p:layoutUnit>
 
-            </p:layoutUnit>
+                <p:layoutUnit position="west" size="175" header="Minimize" collapsible="true">
+                    <p:menu>
+                        <p:submenu label="Resources">
 
-            <p:layoutUnit position="west" size="175" header="Minimize" collapsible="true">
-                <p:menu>
-                    <p:submenu label="Resources">
+                            <p:menuitem value="Demo1" url="demo1.xhtml" />
+                            <p:menuitem value="Demo2" url="demo2.xhtml" />
+                            <p:menuitem value="Demo3" url="demo3.xhtml" />
+                            <p:menuitem value="Demo4" url="demo4.xhtml" />
 
-                        <p:menuitem value="Demo1" url="demo1.xhtml" />
-                        <p:menuitem value="Demo2" url="demo2.xhtml" />
-                        <p:menuitem value="Demo3" url="demo3.xhtml" />
-                        <p:menuitem value="Demo4" url="demo4.xhtml" />
+                        </p:submenu>
 
+                    </p:menu>
 
+                </p:layoutUnit>
 
-                    </p:submenu>
+                <p:layoutUnit position="center">
+                    <p:dialog height="100" width="500" header="Dialog Panel" widgetVar="dlg">
+                        <p:growl id="msg" showDetail="false" sticky="true"/>
+                        <p:ajax event="close" listener="#{demo3ManagedBean.showInfo}" update="msg"/>
+                        Don't
+                    </p:dialog>
+                    <p:commandButton value="Show" type="button" onclick="PF('dlg').show()" />
+                    <p:commandButton value="Hide" type="button" onclick="PF('dlg').hide()" />
 
-                </p:menu>
+                    <p:dataTable value="#{demo3ManagedBean.tableData}" var="row" styleClass="myTable" draggableColumns="true">
+                        <f:facet name="header">Biometric Registered Users</f:facet>
+                        <p:ajax event="rowReorder" listener="#{demo3ManagedBean.onRowReorder}"></p:ajax>
 
-            </p:layoutUnit>
-
-            <p:layoutUnit position="center">
-
-                <h:dataTable value="#{demo3ManagedBean.tableData}" var="row" styleClass="myTable">
-
-                    <h:column>
-                        <f:facet name="header">Badge Number</f:facet>
+                        <p:column headerText="Badge Number">
                             #{row[2]}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Name</f:facet>
+                        </p:column>
+                        <p:column headerText="Name">
                             #{row[3]}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Gender</f:facet>
+                        </p:column>
+                        <p:column headerText="Gender">
                             #{row[4]}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Title</f:facet>
+                        </p:column>
+                        <p:column headerText="Title">
                             #{row[5]}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Pager</f:facet>
+                        </p:column>
+                        <p:column headerText="Pager">
                             #{row[6]}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Email</f:facet>
+                        </p:column>
+                        <p:column headerText="Email">
                             #{row[7]}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Department</f:facet>
+                        </p:column>
+                        <p:column headerText="Department">
                             #{row[8]}
-                    </h:column>
+                        </p:column>
+                        <f:facet name="footer">We are #{demo3ManagedBean.rowCount} users in total</f:facet>
+                    </p:dataTable>
 
-                </h:dataTable>
+                </p:layoutUnit>
 
-            </p:layoutUnit>
+            </p:layout>
+        </h:form>
 
-        </p:layout>
+
 
     </h:body>
 </html>
-

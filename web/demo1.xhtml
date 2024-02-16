@@ -10,11 +10,11 @@
     <h:body>
         <p:layout fullPage="true">
 
-            <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true">
+            <p:layoutUnit position="north" size="50" resizable="true" closable="true" collapsible="true">
 
             </p:layoutUnit>
 
-            <p:layoutUnit position="south" size="100" closable="true" collapsible="true">
+            <p:layoutUnit position="south" size="50" closable="true" collapsible="true">
 
             </p:layoutUnit>
 
@@ -34,22 +34,16 @@
             </p:layoutUnit>
 
             <p:layoutUnit position="center">
-                <h:form>
-
-
-                    <p:dataTable value="#{demo1ManagedBean.tableData}" var="rowData">
-                        <p:columns value="#{demo1ManagedBean.columnNames}" var="columnName" columnIndexVar="columnIndex">
-                            <f:facet name="header">
-                                #{columnName}
-                            </f:facet>
-                            #{rowData[columnIndex]}
-                        </p:columns>
-                    </p:dataTable>                        
-
-                </h:form>
+                <p:dataTable value="#{demo1ManagedBean.tableData}" var="rowData" scrollHeight="400" scrollable="true">
+                    <p:columns value="#{demo1ManagedBean.columnNames}" var="columnName" columnIndexVar="columnIndex">
+                        <f:facet name="header">
+                            #{columnName}
+                        </f:facet>
+                        #{rowData[columnIndex]}
+                    </p:columns>
+                </p:dataTable>                        
             </p:layoutUnit>
 
         </p:layout>
     </h:body>
 </html>
-

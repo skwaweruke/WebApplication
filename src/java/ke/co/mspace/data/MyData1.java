@@ -7,7 +7,7 @@ package ke.co.mspace.data;
 
 import java.io.Serializable;
 
-public class MyData implements Serializable {
+public class MyData1 implements Serializable {
 
     private String firstName;
     private String lastName;
@@ -17,7 +17,7 @@ public class MyData implements Serializable {
     private String marital;
     private int age;
 
-    public MyData(String firstName, String lastName, String gender, String work, String home, String marital, int age) {
+    public MyData1(String firstName, String lastName, String gender, String work, String home, String marital, int age) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;

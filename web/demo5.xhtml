@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Demo5 Title</title>
+    </h:head>
+    <h:body>
+
+        <h:form>
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" size="50" resizable="true" closable="true" collapsible="true">
+
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="50" closable="true" collapsible="true">
+
+                </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="175" header="Minimize" collapsible="true">
+                   
+                    <p:menu>
+                        <p:submenu label="Resources">
+                            <p:menuitem value="Demo1" url="demo1.xhtml" />
+                            <p:menuitem value="Demo2" url="demo2.xhtml" />
+                            <p:menuitem value="Demo3" url="demo3.xhtml" />
+                            <p:menuitem value="Demo4" url="demo4.xhtml" />
+                            <p:menuitem value="Demo5" url="demo5.xhtml" />
+                        </p:submenu>
+                    </p:menu>
+
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center">
+
+                    <p:dataGrid columns="5" rows="15">
+
+                    
+
+                    </p:dataGrid>
+
+                </p:layoutUnit>
+
+            </p:layout>
+        </h:form>
+
+
+    </h:body>
+</html>
+
