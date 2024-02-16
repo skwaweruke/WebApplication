@@ -67,8 +67,33 @@ public class Demo4ManagedBean {
 
             Statement statement = connection.createStatement();
             String checkinout;
-            checkinout = "SELECT CONVERT(date, GETDATE()) AS BIOMETRICDATE, CONVERT(VARCHAR(5), CHECKINOUT.CHECKTIME,108) AS BIOMETRICTIME, USERINFO.Badgenumber, USERINFO.PAGER, USERINFO.Name FROM CHECKINOUT\n"
-                    + "INNER JOIN USERINFO ON CHECKINOUT.USERID  = USERINFO.USERID WHERE CHECKTIME >= DATEADD(day,-30, GETDATE()) and USERINFO.PAGER IS NOT NULL order by LOGID DESC";
+            checkinout = "WITH UserCheckinRank AS (\n"
+                    + "    SELECT \n"
+                    + "        CONVERT(date, CHECKINOUT.CHECKTIME) AS BIOMETRICDATE,\n"
+                    + "        CONVERT(VARCHAR(5), CHECKINOUT.CHECKTIME, 108) AS BIOMETRICTIME,\n"
+                    + "        USERINFO.Badgenumber,\n"
+                    + "        USERINFO.PAGER,\n"
+                    + "        USERINFO.Name,\n"
+                    + "        ROW_NUMBER() OVER (PARTITION BY CONVERT(date, CHECKINOUT.CHECKTIME), CHECKINOUT.USERID ORDER BY CHECKINOUT.CHECKTIME) AS RowNum\n"
+                    + "    FROM \n"
+                    + "        CHECKINOUT\n"
+                    + "    INNER JOIN \n"
+                    + "        USERINFO ON CHECKINOUT.USERID = USERINFO.USERID\n"
+                    + "    WHERE \n"
+                    + "        CHECKTIME >= DATEADD(day, -30, GETDATE())\n"
+                    + "        AND CHECKINOUT.CHECKTYPE = 'I'\n"
+                    + "        AND USERINFO.PAGER IS NOT NULL\n"
+                    + ")\n"
+                    + "SELECT \n"
+                    + "    BIOMETRICDATE,\n"
+                    + "    BIOMETRICTIME,\n"
+                    + "    Badgenumber,\n"
+                    + "    PAGER,\n"
+                    + "    Name\n"
+                    + "FROM \n"
+                    + "    UserCheckinRank\n"
+                    + "WHERE \n"
+                    + "    RowNum = 1;";
             ResultSet resultSet = statement.executeQuery(checkinout);
 
             int columnCount = resultSet.getMetaData().getColumnCount();
@@ -104,6 +129,7 @@ public class Demo4ManagedBean {
                     }
                 }
             }
+            
             return filteredData;
         }
     }
@@ -133,7 +159,6 @@ public class Demo4ManagedBean {
             HSSFSheet sheet = wb.getSheetAt(0);
             HSSFRow header = sheet.getRow(0);
             HSSFCellStyle cellStyle = wb.createCellStyle();
-            cellStyle.setFillForegroundColor(HSSFColor.GREEN.index);
             cellStyle.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
             for (int i = 0; i < header.getPhysicalNumberOfCells(); i++) {
                 header.getCell(i).setCellStyle(cellStyle);
