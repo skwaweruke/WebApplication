@@ -57,7 +57,7 @@
                     <div class="flex justify-content-between">
 
                         <p:commandButton value="Export as XLS" ajax="false">
-                            <p:dataExporter type="xls" target="tableId" fileName="CheckINOUT" postProcessor="#{demo4ManagedBean.postProcessXLS}" pageOnly="true"/>
+                            <p:dataExporter type="xls" target="tableId" fileName="CheckINOUT" postProcessor="#{demo4ManagedBean.postProcessXLS}"/>
                         </p:commandButton>
                         <p:commandButton value="Export to PDF" ajax="false">
                             <p:dataExporter type="pdf" target="tableId" fileName="CheckINOUT" preProcessor="#{demo4ManagedBean.preProcessPDF}"/>
