@@ -92,6 +92,17 @@ public class DBConnection {
             }
         } catch (SQLException ex) {
             Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            
+            try {
+                if (con != null && !con.isClosed()) {
+                    
+                    con.close();
+                    
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
 
         return con;
