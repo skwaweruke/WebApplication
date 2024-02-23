@@ -7,9 +7,12 @@ package ke.co.mspace.bean;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -68,6 +71,9 @@ public class Demo3ManagedBean {
         } catch (Exception e) {
             // Log the exception or handle it based on your application's requirements
             System.out.println("Error fetching table data: " + e.getMessage());
+        } finally{
+     
+        
         }
 
     }
